@@ -4,14 +4,16 @@ using JunDevOpsEFCore.Data.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JunDevOpsEFCore.Data.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    partial class OrderContextModelSnapshot : ModelSnapshot
+    [Migration("20200529005230_BuildDB_001")]
+    partial class BuildDB_001
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,15 +40,6 @@ namespace JunDevOpsEFCore.Data.Migrations
                     b.HasKey("OrderID");
 
                     b.ToTable("Orders");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderID = 1,
-                            CustomerID = 1,
-                            EmployeeID = 1,
-                            OrderDate = new DateTime(2020, 5, 19, 14, 38, 56, 793, DateTimeKind.Local).AddTicks(2489)
-                        });
                 });
 
             modelBuilder.Entity("JunDevOpsEFCore.Data.Model.OrderDetail", b =>
@@ -70,15 +63,6 @@ namespace JunDevOpsEFCore.Data.Migrations
                     b.HasIndex("OrderID");
 
                     b.ToTable("OrderDetails");
-
-                    b.HasData(
-                        new
-                        {
-                            OrderDetailID = 1,
-                            OrderID = 1,
-                            ProductID = 1,
-                            Quantity = 1000
-                        });
                 });
 
             modelBuilder.Entity("JunDevOpsEFCore.Data.Model.OrderDetail", b =>
